@@ -1,4 +1,4 @@
-package com.marginallyclever;
+package com.marginallyclever.dial;
 
 import org.assertj.swing.core.BasicRobot;
 import org.assertj.swing.core.Robot;
@@ -17,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisabledIfEnvironmentVariable(named = "CI", matches = "true", disabledReason = "headless environment")
 public class TestDial {
     private FrameFixture window;
-    Dial dial;
+    private Dial dial;
 
     @Test
     void testInitialValue() {
         Dial dial2 = new Dial();
-        assertEquals(0, dial2.getValue(), "com.marginallyclever.Dial should initialize at 0");
+        assertEquals(0, dial2.getValue(), "com.marginallyclever.dial.Dial should initialize at 0");
     }
 
     @BeforeEach
@@ -54,15 +54,15 @@ public class TestDial {
             }
         });
 
-        // Simulate mouse click and drag on the com.marginallyclever.Dial
-        // Note: You'll need to adjust the drag coordinates based on the com.marginallyclever.Dial's size and position
+        // Simulate mouse click and drag on the com.marginallyclever.dial.Dial
+        // Note: You'll need to adjust the drag coordinates based on the com.marginallyclever.dial.Dial's size and position
         window.panel().robot().pressMouse(window.panel().target(), new Point(25, 25));
         window.panel().robot().moveMouse(new Point(50, 50));
         window.panel().robot().releaseMouseButtons();
 
-        // Assert the com.marginallyclever.Dial's value changed as expected
+        // Assert the com.marginallyclever.dial.Dial's value changed as expected
         assert(0!=dial.getValue());
         assert(0!=steps[0]);
-        // Note: Implement the logic to retrieve and assert the com.marginallyclever.Dial's value after interaction
+        // Note: Implement the logic to retrieve and assert the com.marginallyclever.dial.Dial's value after interaction
     }
 }

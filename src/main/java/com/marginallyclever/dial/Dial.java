@@ -1,4 +1,4 @@
-package com.marginallyclever;
+package com.marginallyclever.dial;
 
 import javax.swing.*;
 import javax.swing.event.EventListenerList;

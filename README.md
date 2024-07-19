@@ -1,4 +1,4 @@
-# com.marginallyclever.Dial
+# com.marginallyclever.dial.Dial
 
 ![img.png](img.png)
 
