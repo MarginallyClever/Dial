@@ -1,3 +1,4 @@
+package com.marginallyclever;
 
 import org.assertj.swing.core.BasicRobot;
 import org.assertj.swing.core.Robot;
@@ -21,7 +22,7 @@ public class TestDial {
     @Test
     void testInitialValue() {
         Dial dial2 = new Dial();
-        assertEquals(0, dial2.getValue(), "Dial should initialize at 0");
+        assertEquals(0, dial2.getValue(), "com.marginallyclever.Dial should initialize at 0");
     }
 
     @BeforeEach
@@ -53,15 +54,15 @@ public class TestDial {
             }
         });
 
-        // Simulate mouse click and drag on the Dial
-        // Note: You'll need to adjust the drag coordinates based on the Dial's size and position
+        // Simulate mouse click and drag on the com.marginallyclever.Dial
+        // Note: You'll need to adjust the drag coordinates based on the com.marginallyclever.Dial's size and position
         window.panel().robot().pressMouse(window.panel().target(), new Point(25, 25));
         window.panel().robot().moveMouse(new Point(50, 50));
         window.panel().robot().releaseMouseButtons();
 
-        // Assert the Dial's value changed as expected
+        // Assert the com.marginallyclever.Dial's value changed as expected
         assert(0!=dial.getValue());
         assert(0!=steps[0]);
-        // Note: Implement the logic to retrieve and assert the Dial's value after interaction
+        // Note: Implement the logic to retrieve and assert the com.marginallyclever.Dial's value after interaction
     }
 }

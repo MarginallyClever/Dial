@@ -1,3 +1,5 @@
+package com.marginallyclever;
+
 import javax.swing.*;
 import javax.swing.event.EventListenerList;
 import java.awt.*;
