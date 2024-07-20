@@ -224,9 +224,15 @@ public class Dial extends JComponent {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(200,200);
-		frame.add(new Dial());
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setSize(200 + 200,200 + 200); // adding some extra space for the button, to make a point.
+		
+		final javax.swing.JPanel panel = new javax.swing.JPanel();
+		
+		panel.add(new Dial());
+		panel.add(new javax.swing.JButton("Click this button to take away focus from the dial"));
+		
+		frame.add(panel);
 		frame.setVisible(true);
 	}
 }
