@@ -30,9 +30,9 @@ public class Dial extends JComponent {
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				switch (e.getID()) {
-					case KeyEvent.VK_PLUS -> onChange(1);
-					case KeyEvent.VK_MINUS -> onChange(-1);
+				switch (e.getKeyChar()) {
+					case '+' -> onChange(1);
+					case '-' -> onChange(-1);
 					default -> {}
 				}
 			}
