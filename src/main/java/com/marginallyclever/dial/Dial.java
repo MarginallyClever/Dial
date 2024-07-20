@@ -38,6 +38,13 @@ public class Dial extends JComponent {
 			}
 		});
 
+		getInputMap(JComponent.WHEN_FOCUSED).put(javax.swing.KeyStroke.getKeyStroke('='),       "INCREASE_DIAL_VALUE");
+		getInputMap(JComponent.WHEN_FOCUSED).put(javax.swing.KeyStroke.getKeyStroke("PAGE_UP"), "INCREASE_DIAL_VALUE");
+
+		final javax.swing.Action increaseDialValue = new javax.swing.AbstractAction(){public void actionPerformed(ActionEvent e) {onChange(1);}};
+
+		getActionMap().put("INCREASE_DIAL_VALUE", increaseDialValue);
+		
 		addMouseWheelListener( (e) -> onChange(-e.getWheelRotation()) );
 
 		addMouseListener(new MouseAdapter() {
