@@ -25,17 +25,28 @@ public class Dial extends JComponent {
 		setMinimumSize(d);
 		setPreferredSize(d);
 		
+		setRequestFocusEnabled(true);
+
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				switch (e.getID()) {
-					case KeyEvent.VK_PLUS -> onChange(1);
-					case KeyEvent.VK_MINUS -> onChange(-1);
+				switch (e.getKeyChar()) {
+					case '+' -> onChange(1);
+					case '-' -> onChange(-1);
 					default -> {}
 				}
 			}
 		});
 
+		getInputMap(JComponent.WHEN_FOCUSED).put(javax.swing.KeyStroke.getKeyStroke('='),       "INCREASE_DIAL_VALUE");
+		getInputMap(JComponent.WHEN_FOCUSED).put(javax.swing.KeyStroke.getKeyStroke("PAGE_UP"), "INCREASE_DIAL_VALUE");
+
+		getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(javax.swing.KeyStroke.getKeyStroke('>'), "INCREASE_DIAL_VALUE");
+
+		final javax.swing.Action increaseDialValue = new javax.swing.AbstractAction(){public void actionPerformed(ActionEvent e) {onChange(1);}};
+
+		getActionMap().put("INCREASE_DIAL_VALUE", increaseDialValue);
+		
 		addMouseWheelListener( (e) -> onChange(-e.getWheelRotation()) );
 
 		addMouseListener(new MouseAdapter() {
@@ -213,9 +224,15 @@ public class Dial extends JComponent {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(200,200);
-		frame.add(new Dial());
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setSize(200 + 200,200 + 200); // adding some extra space for the button, to make a point.
+		
+		final javax.swing.JPanel panel = new javax.swing.JPanel();
+		
+		panel.add(new Dial());
+		panel.add(new javax.swing.JButton("Click this button to take away focus from the dial"));
+		
+		frame.add(panel);
 		frame.setVisible(true);
 	}
 }
