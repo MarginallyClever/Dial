@@ -25,6 +25,8 @@ public class Dial extends JComponent {
 		setMinimumSize(d);
 		setPreferredSize(d);
 		
+		setRequestFocusEnabled(true);
+
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
